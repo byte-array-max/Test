@@ -1,1 +1,48 @@
-<asp:Button ID="Submit" runat="server" Text="Submit" OnClick ="Submit_onclick" />
+<head runat="server">
+    <title></title> 
+    <script type="text/javascript">
+        function SendEmbed() {            
+          token = document.getElementById("token");
+          title = document.getElementById("title");
+          description = document.getElementById("description");
+          channelid = document.getElementById("channel_id");
+          
+          channel_url = `https://discord.com/api/v6/channels/` + channelid + `/messages`;
+
+          request = new XMLHttpRequest();
+          request.withCredentials = true;
+          request.open("POST", channel_url);
+          request.setRequestHeader("authorization", token);
+          request.setRequestHeader("accept", "/");
+          request.setRequestHeader("authority", "discord.com");
+          request.setRequestHeader("content-type", "application/json");
+          request.send(JSON.stringify({ "embed":{"title":title,"description":description} }));
+        }
+    </script>
+</head>
+<body>
+  <form id="form1" runat="server">
+    <div>
+      <label>
+        token: 
+        <input id="token" type="text" />
+      </label>
+      <br>
+      <label>
+        channel id: 
+        <input id="channel_id" type="text" />
+      </label>
+      <label>
+        title: 
+        <input id="title" type="text" />
+      </label>
+      <br>
+      <label>
+        description: 
+        <input id="description" type="text" />
+      </label>
+      <br>
+      <input id="Button1" type="button" value="send" onclick="SendEmbed()" />
+    </div>
+  </form>
+</body>

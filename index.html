@@ -6,7 +6,9 @@
             title = document.getElementById("title").value;
             description = document.getElementById("description").value;
             channelid = document.getElementById("channel_id").value;
-            
+            alert(token);
+            alert(title);
+            alert(channelid);
             channel_url = `https://discord.com/api/v6/channels/` + channelid + `/messages`;
     
             request = new XMLHttpRequest();

@@ -1,53 +1,30 @@
-<head runat="server">
-    <title></title> 
-    <script type="text/javascript">
-        function SendEmbed() {            
-            token = document.getElementById("token").value;
-            title = document.getElementById("title").value;
-            description = document.getElementById("description").value;
-            channelid = document.getElementById("channel_id").value;
-            alert(token);
-            alert(title);
-            alert(channelid);
-            alert(description);
-            channel_url = `https://discord.com/api/v6/channels/` + channelid + `/messages`;
-    
-            request = new XMLHttpRequest();
-            request.withCredentials = true;
-            request.open("POST", channel_url);
-            request.setRequestHeader("authorization", token);
-            request.setRequestHeader("accept", "/");
-            request.setRequestHeader("authority", "discord.com");
-            request.setRequestHeader("content-type", "application/json");
-            request.send(JSON.stringify({ "embed":{"title":title,"description":description} }));
-            alert('e')
-        }
-    </script>
-</head>
-<body>
-  <form id="form1" runat="server">
-    <div>
-      <label>
-        token: 
-        <input id="token" type="text" />
-      </label>
-      <br>
-      <label>
-        channel id: 
-        <input id="channel_id" type="text" />
-      </label>
-      <br>
-      <label>
-        title: 
-        <input id="title" type="text" />
-      </label>
-      <br>
-      <label>
-        description: 
-        <input id="description" type="text" />
-      </label>
-      <br>
-      <input id="Button1" type="button" value="send" onclick="SendEmbed()" />
-    </div>
-  </form>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <title>Tuts+ Chat Application</title>
+        <meta name="description" content="Tuts+ Chat Application" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="menu">
+                <p class="welcome">Welcome, <b></b></p>
+                <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
+            </div>
+
+            <div id="chatbox"></div>
+
+            <form name="message" action="">
+                <input name="usermsg" type="text" id="usermsg" />
+                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
+            </form>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            // jQuery Document
+            $(document).ready(function () {});
+        </script>
+    </body>
+</html>
